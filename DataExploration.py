@@ -36,10 +36,11 @@ plt.xlabel('review count per user')
 # Distribution of all reviews
 review = pd.DataFrame(data.groupby(['overall']).size())
 review['rating'] = [1,2,3,4,5]
-review.plot(x='rating',kind='bar')
+review.plot(x='rating',kind='bar', legend=False)
 plt.xlabel('rating')
+plt.ylabel('frequency')
 
 # Distribution of review text length
 reviewLength = data['reviewText'].apply(len)
-reviewLength.plot.hist(bins=2000, alpha=0.5)
+reviewLength.plot(kind='hist', bins=200, alpha=0.5, xlim=[0,10000])
 plt.xlabel('length per review')
